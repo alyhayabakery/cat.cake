@@ -1,106 +1,112 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>كتالوج الكيك</title>
+<meta charset="UTF-8">
+<title>كتالوج الكيك</title>
 
-  <!-- مكتبة تقليب الصفحات -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4/turn.min.js"></script>
+<!-- مكتبة 3D FlipBook -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/3dflipbook@1.7.0/dist/flipbook.min.css">
+<script src="https://cdn.jsdelivr.net/npm/3dflipbook@1.7.0/dist/flipbook.min.js"></script>
 
-  <style>
-    body {
-      background: #f2f2f2;
-      font-family: "Tahoma", sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
+<style>
+  body {
+    background: #f2f2f2;
+    margin: 0;
+    font-family: Tahoma;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
 
-    #catalog {
-      width: 900px;
-      height: 600px;
-    }
+  #book {
+    width: 100%;
+    max-width: 900px;
+    height: 600px;
+  }
 
-    .page {
-      width: 100%;
-      height: 100%;
-      background: white;
-      padding: 20px;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
+  .page {
+    width: 100%;
+    height: 100%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+  }
 
-    .page img {
-      width: 85%;
-      border-radius: 15px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
-      margin-bottom: 15px;
-    }
+  .page img {
+    width: 90%;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    margin-bottom: 15px;
+  }
 
-    h2, h3 {
-      margin: 10px 0;
-    }
-
-    .price {
-      font-size: 22px;
-      color: #b22222;
-      font-weight: bold;
-    }
-  </style>
+  .price {
+    font-size: 22px;
+    color: #b22222;
+    font-weight: bold;
+  }
+</style>
 </head>
 
 <body>
 
-<div id="catalog">
-  <!-- صفحة الغلاف -->
-  <div class="page">
-    <h2>كتالوج الكيك</h2>
-    <p>تشكيلة فاخرة من الكيك</p>
-  </div>
-
-  <!-- صفحة 1 -->
-  <div class="page">
-    <img src="./img/تارت 3.jpg" alt="كيك شوكولاتة">
-    <h3>كيك شوكولاتة</h3>
-    <div class="price">45 ريال</div>
-  </div>
-
-  <!-- صفحة 2 -->
-  <div class="page">
-    <img src="./img/تارت2.jpg" alt="كيك فراولة">
-    <h3>كيك فراولة</h3>
-    <div class="price">55 ريال</div>
-  </div>
-
-  <!-- صفحة 3 -->
-  <div class="page">
-    <img src="./img/ترافيل توت.jpg" alt="كيك فانيلا">
-    <h3>كيك فانيلا</h3>
-    <div class="price">40 ريال</div>
-  </div>
-
-  <!-- صفحة 4 -->
-  <div class="page">
-    <img src="./img/توسن الزعتر.jpg" alt="كيك لوتس">
-    <h3>كيك لوتس</h3>
-    <div class="price">60 ريال</div>
-  </div>
-</div>
+<div id="book"></div>
 
 <script>
-  // تفعيل التقليب
-  $("#catalog").turn({
-    width: 900,
-    height: 600,
-    autoCenter: true,
-    gradients: true,
-    duration: 1200
+  const pages = [
+    `<div class='page'><h2>كتالوج الكيك</h2><p>تشكيلة فاخرة</p></div>`,
+
+    `<div class='page'>
+      <img src='cake1.jpg'>
+      <h3>كيك شوكولاتة</h3>
+      <div class='price'>45 ريال</div>
+    </div>`,
+
+    `<div class='page'>
+      <img src='cake2.jpg'>
+      <h3>كيك فراولة</h3>
+      <div class='price'>55 ريال</div>
+    </div>`,
+
+    `<div class='page'>
+      <img src='cake3.jpg'>
+      <h3>كيك فانيلا</h3>
+      <div class='price'>40 ريال</div>
+    </div>`,
+
+    `<div class='page'>
+      <img src='cake4.jpg'>
+      <h3>كيك لوتس</h3>
+      <div class='price'>60 ريال</div>
+    </div>`,
+
+    `<div class='page'>
+      <img src='cake5.jpg'>
+      <h3>كيك ريد فيلفت</h3>
+      <div class='price'>50 ريال</div>
+    </div>`,
+
+    `<div class='page'>
+      <img src='cake6.jpg'>
+      <h3>كيك تيراميسو</h3>
+      <div class='price'>65 ريال</div>
+    </div>`
+  ];
+
+  const book = document.getElementById("book");
+
+  window.FlipBook(book, {
+    pages: pages,
+    skin: "light",
+    controls: {
+      zoom: true,
+      pageNumber: true,
+      swipe: true
+    }
   });
 </script>
 
